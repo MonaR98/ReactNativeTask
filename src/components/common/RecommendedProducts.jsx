@@ -1,36 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react';
 import CardComponent from './CardComponent';
-
+import useProductsList from '../hooks/useProductsList';
 
 const RecommendedProducts = () => {
+    const list = useProductsList()
+
+    const renderItem = ({ item }) => {
+        return <CardComponent item={item} />
+    }
+
     return (
-        <View>
-            <Text style={styles.text}>
-                Recommended
-            </Text>
-            <View style={{ flexDirection: 'row' }}>
-                <CardComponent />
-                <CardComponent />
-            </View>
-            <View style={{ flexDirection: 'row' }}>
-                <CardComponent />
-                <CardComponent />
-            </View>
-            <View style={{ flexDirection: 'row' }}>
-                <CardComponent />
-                <CardComponent />
-            </View>
-        </View>
+        <FlatList
+            data={list.products}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            numColumns={2}
+        />
     )
 }
 
 export default RecommendedProducts
 
-const styles = StyleSheet.create({
-    text: {
-        fontSize: 30,
-        fontWeight: 300,
-        marginHorizontal: 12
-    }
-})

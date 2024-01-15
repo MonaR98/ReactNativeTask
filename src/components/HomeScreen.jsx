@@ -15,9 +15,9 @@ const HomeScreen = () => {
         <DiscountCard backgroundColor={COLORS.primary_yellow} />
         <DiscountCard backgroundColor={'#FFE19F'} />
       </ScrollView>
-      <ScrollView>
+    
         <RecommendedProducts />
-      </ScrollView>
+ 
     </View>
   )
 }

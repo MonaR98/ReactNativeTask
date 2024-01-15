@@ -32,7 +32,12 @@ const Categories = () => {
     return (
         <View style={styles.main_container}>
             {loading ? <View style={styles.loader_container}><ActivityIndicator color={'black'} /></View>
-                : (<View style={{ flex: 1, }}>
+                : (<View style={{ flexGrow: 1, }}>
+                    <View style={{ flex: 1, backgroundColor: COLORS.primary_blue, width: wp(99), marginBottom: 6, borderRadius: 6, alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={{ color: 'white', fontSize: 21, fontWeight: '500' }}>
+                            Categories
+                        </Text>
+                    </View>
                     <FlatList
                         data={categoryList}
                         renderItem={renderItem}

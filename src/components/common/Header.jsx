@@ -7,8 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 const Header = () => {
-    // const cartItems = useSelector((store) => store.cart.items);
-    const cartItems = ['sdsd', 'adasd']
+    const cartItems = useSelector((store) => store.cart);
     const navigation = useNavigation();
     return (
         <View style={styles.main_container}>
