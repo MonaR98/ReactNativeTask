@@ -6,7 +6,8 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { useNavigation } from '@react-navigation/native';
 
 const CardComponent = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
+
   return (
     <View style={styles.card_container}>
       <TouchableOpacity onPress={() => navigation.navigate('ProductDetails')}>

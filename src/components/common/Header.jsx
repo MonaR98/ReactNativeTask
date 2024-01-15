@@ -3,14 +3,26 @@ import React from 'react'
 import { COLORS } from '../../constants/theme';
 import Icon from './Icon';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+    // const cartItems = useSelector((store) => store.cart.items);
+    const cartItems = ['sdsd', 'adasd']
+    const navigation = useNavigation();
     return (
         <View style={styles.main_container}>
             <View style={styles.header_section}>
                 <View style={styles.welcome_section}>
                     <Text style={styles.welcome_text}> Hey, Rahul</Text>
-                    <Icon icon={'Bag'} color='white' style={{ marginRight: 12, }} size={22} />
+                    <View style={{ flexDirection: 'row' }}>
+                        <Icon icon={'Bag'} color='white' style={{ marginRight: 12, }} size={22} onpress={() => navigation.navigate('CartScreen')} />
+                        {cartItems.length !== 0 && <View style={styles.button}>
+                            <Text style={styles.button_label}>
+                                {`${cartItems.length}`}
+                            </Text>
+                        </View>}
+                    </View>
                 </View>
                 <View style={styles.searchbar_container}>
                     <Icon icon={'Search'} />
@@ -66,6 +78,21 @@ const styles = StyleSheet.create({
         fontSize: hp(4),
         fontWeight: 200
     },
+    button: {
+        backgroundColor: COLORS.primary_yellow,
+        borderRadius: 50,
+        width: 18,
+        height: 18,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        marginLeft: 12,
+        marginTop: -5
+    },
+    button_label: {
+        color: 'white',
+        fontSize: 12,
+    },
     searchbar_container: {
         borderWidth: 1,
         borderRadius: 50,
@@ -108,6 +135,7 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
     arrow_icon: {
-        marginTop: 6, marginLeft: 5
+        marginTop: 6,
+        marginLeft: 5
     },
 })
