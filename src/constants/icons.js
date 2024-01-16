@@ -9,5 +9,6 @@ const Search = require('../assets/icons/search.png');
 const DownArrow = require('../assets/icons/down_arrow.png');
 const HeartOutline = require('../assets/icons/heart_outline.png');
 const Heart = require('../assets/icons/heart-filled.png');
+const Cross = require('../assets/icons/cross.png');
 
-export default {Heart, HeartOutline,DownArrow,Back, Bag, Category, Favourite, Home, ImageIcon, More, Search}
+export default {Cross, Heart, HeartOutline,DownArrow,Back, Bag, Category, Favourite, Home, ImageIcon, More, Search}

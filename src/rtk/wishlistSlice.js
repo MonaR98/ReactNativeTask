@@ -5,10 +5,13 @@ const wishlistSlice = createSlice({
     initialState: [],
     reducers: {
         addItemToWishlist: (state, action) => {
-             state.push(action.payload)
+            const newItem = action.payload;
+            if (!state.find((item) => item.id === newItem.id)) {
+                state.push(action.payload)
+            }
         },
         removeItemFromWishlist: (state, action) => {
-            return state.filter((item) => item.id !== action.payload);
+           return state.filter((item) => item.id !== action.payload);
       },
         clearWishlist: (state) => {
            state.length = 0

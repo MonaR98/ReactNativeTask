@@ -1,14 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-
+import CommonHeader from './common/CommonHeader'
 const MoreOptionScreen = () => {
   return (
-    <View>
-      <Text>MoreOptionScreen</Text>
+    <View style={styles.main_container}>
+      <CommonHeader title={'Profile'} />
     </View>
   )
 }
 
 export default MoreOptionScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  main_container: {
+    flex: 1,
+    backgroundColor: 'white'
+  }
+})

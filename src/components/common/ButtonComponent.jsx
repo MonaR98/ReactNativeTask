@@ -1,12 +1,26 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Platform } from 'react-native'
 import React from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { COLORS } from '../../constants/theme';
-const ButtonComponent = ({ label, onpress, labelStyle, isFilled }) => {
+
+export const RoundButton = ({ label, onpress, containerStyle, labelStyle }) => {
+  return (<View style={[containerStyle, styles.round_button_container]}>
+    <TouchableOpacity onPress={onpress}>
+      <View style={[styles.button, { ...containerStyle }]}>
+        <Text style={[styles.button_label, { ...labelStyle }]}>
+          {label}
+        </Text>
+      </View>
+    </TouchableOpacity>
+  </View>)
+}
+
+
+const ButtonComponent = ({ label, onpress, labelStyle, isFilled , style }) => {
   return (
-    <View style={[{ backgroundColor: isFilled ? COLORS.secondary_blue : 'white' },styles.button_container]}>
+    <View style={[{ backgroundColor: isFilled ? COLORS.secondary_blue : 'white' }, styles.button_container, style]}>
       <TouchableOpacity onPress={onpress}>
-        <Text style={[labelStyle, {color:isFilled ? 'white' : COLORS.secondary_blue, fontSize:16, fontWeight:'300'}]}>{label}</Text>
+        <Text style={[labelStyle, { color: isFilled ? 'white' : COLORS.secondary_blue, fontSize: 16, fontWeight: Platform.OS === 'ios' ? '300' : 300 }]}>{label}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -22,6 +36,24 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor:COLORS.secondary_blue
+    borderColor: COLORS.secondary_blue
+  },
+  round_button_container: {
+    borderColor: COLORS.light_gray,
+    marginHorizontal: 8
+  },
+  button: {
+    backgroundColor: COLORS.light_gray,
+    borderRadius: 50,
+    width: 25,
+    height: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button_label: {
+    color: 'black',
+    fontSize: 18,
+    marginTop: -2,
+    fontWeight: Platform.OS === 'ios' ? '200' : 300,
   },
 })

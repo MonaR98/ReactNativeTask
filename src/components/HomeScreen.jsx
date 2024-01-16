@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native'
 import React from 'react'
-import Header from './common/Header';
+import Header from './HomeHeader';
 import RecommendedProducts from './common/RecommendedProducts';
 import { ScrollView } from 'react-native-gesture-handler';
 import DiscountCard from './common/DiscountCard';
@@ -15,9 +15,7 @@ const HomeScreen = () => {
         <DiscountCard backgroundColor={COLORS.primary_yellow} />
         <DiscountCard backgroundColor={'#FFE19F'} />
       </ScrollView>
-    
-        <RecommendedProducts />
- 
+      <RecommendedProducts />
     </View>
   )
 }

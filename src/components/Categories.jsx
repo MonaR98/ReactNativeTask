@@ -1,11 +1,14 @@
-import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, FlatList, StyleSheet, Text, View, Platform } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import axios from 'axios'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { COLORS } from '../constants/theme'
+import CommonHeader from './common/CommonHeader';
+
+
 const Categories = () => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [categoryList, setCategoryList] = useState([])
     const categorySet = new Set()
 
@@ -33,18 +36,13 @@ const Categories = () => {
         <View style={styles.main_container}>
             {loading ? <View style={styles.loader_container}><ActivityIndicator color={'black'} /></View>
                 : (<View style={{ flexGrow: 1, }}>
-                    <View style={{ flex: 1, backgroundColor: COLORS.primary_blue, width: wp(99), marginBottom: 6, borderRadius: 6, alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={{ color: 'white', fontSize: 21, fontWeight: '500' }}>
-                            Categories
-                        </Text>
-                    </View>
+                    <CommonHeader title={'Categories'} showCart={true} />
                     <FlatList
                         data={categoryList}
                         renderItem={renderItem}
                         keyExtractor={(item) => item}
                         numColumns={2}
                     />
-
                 </View>)}
         </View>
     )
@@ -56,11 +54,14 @@ const styles = StyleSheet.create({
 
     main_container: {
         flex: 1,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-
     loader_container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'rgba(79, 78, 75,0.2)'
+        alignItems: 'center',
+        alignSelf: 'center',
     }
 })

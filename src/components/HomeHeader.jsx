@@ -1,7 +1,7 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Platform } from 'react-native'
 import React from 'react'
-import { COLORS } from '../../constants/theme';
-import Icon from './Icon';
+import { COLORS } from '../constants/theme';
+import Icon from './common/Icon';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     welcome_text: {
         color: 'white',
         fontSize: hp(4),
-        fontWeight: 200
+        fontWeight: Platform.OS === 'ios' ? '200' : 200
     },
     button: {
         backgroundColor: COLORS.primary_yellow,
@@ -125,12 +125,12 @@ const styles = StyleSheet.create({
     light_text: {
         color: COLORS.light_gray,
         opacity: .5,
-        fontWeight: 700,
+        fontWeight: Platform.OS === 'ios' ? "700" : 700,
         fontSize: 11
     },
     dark_text: {
         color: COLORS.light_gray,
-        fontWeight: 500,
+        fontWeight: Platform.OS === 'ios' ? "500" : 500,
         fontSize: 14
     },
     arrow_icon: {
