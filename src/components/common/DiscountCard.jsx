@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Platform } from 'react-native'
 import React from 'react'
-import { widthPercentageToDP as wp,} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, } from 'react-native-responsive-screen';
 import Icon from './Icon';
 const DiscountCard = ({ backgroundColor }) => {
     return (
@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
     },
     light_font: {
         fontSize: 16,
-        fontWeight: Platform.OS === 'ios' ? '300' : 100,
+        fontWeight: Platform.OS === 'ios' ? '300' : 'normal',
         color: 'white'
     },
     bold_font: {
         fontSize: 21,
-        fontWeight: Platform.OS === 'ios' ? '700' : 700,
+        fontWeight: Platform.OS === 'ios' ? '700' : 'bold',
         color: 'white'
     }
 })

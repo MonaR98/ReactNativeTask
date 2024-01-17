@@ -96,11 +96,11 @@ const styles = StyleSheet.create({
   },
   brand_text: {
     fontSize: 31,
-    fontWeight: Platform.OS === 'ios' ? '300' : 300
+    fontWeight: Platform.OS === 'ios' ? '300' : 'normal'
   },
   title_text: {
     fontSize: 31,
-    fontWeight: Platform.OS === 'ios' ? '500' : 500
+    fontWeight: Platform.OS === 'ios' ? '500' : 'bold'
   },
   rating_section: {
     flexDirection: 'row',
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
 
   },
   rating_text: {
-    fontWeight: Platform.OS === 'ios' ? '200' : 300,
+    fontWeight: Platform.OS === 'ios' ? '200' : 'normal',
     marginLeft: 3
   },
   imageContainer: {
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   price_label: {
-    fontWeight: Platform.OS === 'ios' ? '500' : 500,
+    fontWeight: Platform.OS === 'ios' ? '500' : 'bold',
     color: COLORS.secondary_blue,
     fontSize: 16
   },
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   },
   discount_text: {
     color: 'white',
-    fontWeight: Platform.OS === 'ios' ? '200' : 200,
+    fontWeight: Platform.OS === 'ios' ? '200' : 'normal',
     fontSize: 12
   },
   buttons_container: {
@@ -167,10 +167,10 @@ const styles = StyleSheet.create({
   },
   description_heading: {
     fontSize: 16,
-    fontWeight: Platform.OS === 'ios' ? '400' : 400
+    fontWeight: Platform.OS === 'ios' ? '400' : 'bold'
   },
   description: {
     fontSize: 14,
-    fontWeight: Platform.OS === 'ios' ? '200' : 200
+    fontWeight: Platform.OS === 'ios' ? '200' : 'normal'
   }
 })

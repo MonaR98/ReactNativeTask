@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   empty_cart_message: {
     color: COLORS.primary_blue,
     fontSize: 21,
-    fontWeight: '300'
+    fontWeight: Platform.OS === 'ios' ? '300' : 'normal'
   },
   billing_section: {
     borderRadius: 12,
@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
   },
   subtotal_label: {
     fontSize: 14,
-    fontWeight: '300',
+    fontWeight: Platform.OS === 'ios' ? '300' : 'normal',
     color: 'black'
   },
   subtotal_value: {
     fontSize: 14,
-    fontWeight: '300',
+    fontWeight: Platform.OS === 'ios' ? '300' : 'normal',
     color: 'black'
   },
 })

@@ -15,12 +15,11 @@ export const RoundButton = ({ label, onpress, containerStyle, labelStyle }) => {
   </View>)
 }
 
-
 const ButtonComponent = ({ label, onpress, labelStyle, isFilled , style }) => {
   return (
     <View style={[{ backgroundColor: isFilled ? COLORS.secondary_blue : 'white' }, styles.button_container, style]}>
       <TouchableOpacity onPress={onpress}>
-        <Text style={[labelStyle, { color: isFilled ? 'white' : COLORS.secondary_blue, fontSize: 16, fontWeight: Platform.OS === 'ios' ? '300' : 300 }]}>{label}</Text>
+        <Text style={[labelStyle, { color: isFilled ? 'white' : COLORS.secondary_blue, fontSize: 16, fontWeight: Platform.OS === 'ios' ? '300' : 'normal' }]}>{label}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -54,6 +53,6 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 18,
     marginTop: -2,
-    fontWeight: Platform.OS === 'ios' ? '200' : 300,
+    fontWeight: Platform.OS === 'ios' ? '200' : 'normal',
   },
 })

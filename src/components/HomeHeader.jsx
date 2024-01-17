@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     welcome_text: {
         color: 'white',
         fontSize: hp(4),
-        fontWeight: Platform.OS === 'ios' ? '200' : 200
+        fontWeight: Platform.OS === 'ios' ? '200' : 'normal'
     },
     button: {
         backgroundColor: COLORS.primary_yellow,
@@ -125,12 +125,12 @@ const styles = StyleSheet.create({
     light_text: {
         color: COLORS.light_gray,
         opacity: .5,
-        fontWeight: Platform.OS === 'ios' ? "700" : 700,
+        fontWeight: Platform.OS === 'ios' ? "700" : "bold",
         fontSize: 11
     },
     dark_text: {
         color: COLORS.light_gray,
-        fontWeight: Platform.OS === 'ios' ? "500" : 500,
+        fontWeight: Platform.OS === 'ios' ? "500" : "bold",
         fontSize: 14
     },
     arrow_icon: {

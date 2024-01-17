@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
-        fontWeight: Platform.OS === 'ios' ? '300':300,
+        fontWeight: Platform.OS === 'ios' ? '300':'normal',
         color: COLORS.primary_blue
     },
 })

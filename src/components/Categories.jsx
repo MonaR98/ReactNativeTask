@@ -51,7 +51,6 @@ const Categories = () => {
 export default Categories
 
 const styles = StyleSheet.create({
-
     main_container: {
         flex: 1,
         backgroundColor: 'white',

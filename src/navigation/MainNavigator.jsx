@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 const MainNavigator = () => {
     return (
         <NavigationContainer>
-            <SafeAreaView style={{ marginTop: 12, backgroundColor: '#F8FFFB' }}>
+            <SafeAreaView style={{ marginTop: 0, backgroundColor: '#F8FFFB' }}>
             </SafeAreaView>
             <StackNavigator />
         </NavigationContainer>

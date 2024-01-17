@@ -16,7 +16,6 @@ const CardComponent = ({ item }) => {
   const isItemInWishlist = wishlistItems.some((wishlistItem) => wishlistItem.id === item.id);
   const addToCartHandler = (item) => {
     dispatch(addItem({ ...item, quantity: 1 }))
-    Alert.alert('Product has been added to you cart!')
   }
   const toggleWishlisted = () => {
     if (isItemInWishlist) {
@@ -25,7 +24,6 @@ const CardComponent = ({ item }) => {
       dispatch(addItemToWishlist(item))
     }
   }
-
   return (
     <View style={styles.card_container}>
       <TouchableOpacity onPress={() => navigation.navigate('ProductDetails', { id: item.id })}>
@@ -36,22 +34,22 @@ const CardComponent = ({ item }) => {
           {item.thumbnail ? <Image style={{ width: wp(20), height: wp(20), borderRadius: 6, }} source={{ uri: item.thumbnail }} /> : <Icon icon={'ImageIcon'} size={55} color='#A1ABC0' />}
         </View>
       </TouchableOpacity>
-      <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-      <View style={styles.price_details}>
-        <View style={{ width:wp(30)}}>
-          <Text style={styles.product_price}>
-            {item.currency ? `${item.currency} ${item.price}` : `$ ${item.price}`}
-          </Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <View style={styles.price_details}>
+          <View style={{ width: wp(30) }}>
+            <Text style={styles.product_price}>
+              {item.currency ? `${item.currency} ${item.price}` : `$ ${item.price}`}
+            </Text>
+          </View>
+          <View style={{ width: wp(30), margin: 1, }}>
+            <Text style={styles.product_title}>
+              {item.title}
+            </Text>
+          </View>
         </View>
-          <View style={{ width: wp(30), margin:1 }}>
-          <Text style={styles.product_title}>
-            {item.title}
-          </Text>
+        <View style={{ alignSelf: 'center' }}>
+          <RoundButton label={'+'} onpress={() => { addToCartHandler(item) }} containerStyle={styles.button} labelStyle={styles.button_label} />
         </View>
-      </View>
-      <View style={{alignSelf:'center'}}>
-        <RoundButton label={'+'} onpress={() => { addToCartHandler(item) }} containerStyle={styles.button} labelStyle={styles.button_label} />
-      </View>
       </View>
     </View>
   )
@@ -73,24 +71,22 @@ const styles = StyleSheet.create({
   },
   icon_container: {
     alignItems: 'center',
-    marginVertical: wp(4)
+    marginVertical: Platform.OS === 'ios' ? wp(4):wp(2)
   },
   price_details: {
     marginVertical: wp(2),
     flexDirection: 'column',
     justifyContent: 'space-evenly'
-
   },
   product_price: {
-    fontWeight: Platform.OS === 'ios' ? '400' : 400,
+    fontWeight: Platform.OS === 'ios' ? '400' : 'bold',
     fontSize: 14
   },
   product_title: {
     color: '#1E222B',
-    fontWeight: Platform.OS === 'ios' ? '200' : 200,
+    fontWeight: Platform.OS === 'ios' ? '200' : 'normal',
     fontSize: 12,
   },
-
   button: {
     backgroundColor: COLORS.secondary_blue,
     borderRadius: 50,
@@ -103,6 +99,6 @@ const styles = StyleSheet.create({
   button_label: {
     color: 'white',
     fontSize: 21,
-    marginTop: -2
+    marginTop: Platform.OS === 'ios'?-2:-3
   }
 })

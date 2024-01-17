@@ -5,6 +5,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Icon from './common/Icon';
 import { removeItemFromWishlist } from '../rtk/wishlistSlice';
 import { useDispatch } from 'react-redux';
+
 const WishlistItemCard = ({ item }) => {
     const dispatch = useDispatch()
     const removeFromWishlist = (id) => {
