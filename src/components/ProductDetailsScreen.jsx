@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Platform, Image } from 'react-native';
+import { StyleSheet, Text, View, Platform, Image, ActivityIndicator } from 'react-native';
 import React, { useState } from 'react';
 import useProductDetails from '../hooks/useProductDetails';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -13,16 +13,16 @@ import { SwiperFlatList } from 'react-native-swiper-flatlist';
 const ProductDetailsScreen = ({ navigation, route }) => {
   const dispatch = useDispatch()
   const { id } = route.params
-  const details = useProductDetails(id)
+  const { productDetail, loading } = useProductDetails(id)
   const [isAddToCartClicked, setClicked] = useState(false)
-  const addToCartHandler = () => {
+   const addToCartHandler = () => {
     setClicked(true);
-    dispatch(addItem(details));
+    dispatch(addItem(productDetail));
 
   }
   const buyNowHandler = () => {
     if (!isAddToCartClicked) {
-      dispatch(addItem(details));
+      dispatch(addItem(productDetail));
     }
     navigation.navigate('CartScreen')
   }
@@ -35,50 +35,55 @@ const ProductDetailsScreen = ({ navigation, route }) => {
   return (
     <View style={styles.main_container}>
       <CommonHeader showCart={true} />
-      <View style={styles.title_section}>
-        <Text style={styles.brand_text}>
-          {details.brand}
-        </Text>
-        <Text style={styles.title_text}>
-          {`${details.title}`}
-        </Text>
-        <View style={styles.rating_section}>
-          <StarRatingDisplay
-            starSize={18}
-            rating={details.rating}
-            color={COLORS.primary_yellow}
-          />
-          <Text style={styles.rating_text}>
-            {`${details.rating}/5`}
+      {loading ? <View><ActivityIndicator color='black' /></View> : <>
+
+        <View style={styles.title_section}>
+          <Text style={styles.brand_text}>
+            {productDetail.brand}
           </Text>
+          <Text style={styles.title_text}>
+            {`${productDetail.title}`}
+          </Text>
+          <View style={styles.rating_section}>
+            <StarRatingDisplay
+              starSize={18}
+              rating={productDetail.rating}
+              color={COLORS.primary_yellow}
+            />
+            <Text style={styles.rating_text}>
+              {`${productDetail.rating}/5`}
+            </Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.price_section}>
-        <Text style={styles.price_label}>{`$${details.price}`}</Text>
-        <View style={styles.discount_badge}>
-          <Text style={styles.discount_text}>{`${details.discountPercentage}% OFF`}</Text>
+        <View style={styles.price_section}>
+          <Text style={styles.price_label}>{`$${productDetail.price}`}</Text>
+          <View style={styles.discount_badge}>
+            <Text style={styles.discount_text}>{`${productDetail.discountPercentage}% OFF`}</Text>
+          </View>
         </View>
-      </View>
-      <View style={{marginTop:12, width:wp(100), borderRadius:6, padding:12, backgroundColor:COLORS.light_gray}}>
-        <SwiperFlatList
-          data={details.images}
-          renderItem={renderImageItem}
-          index={0}
-          showPagination
-          paginationActiveColor={COLORS.primary_yellow}
-          paginationDefaultColor={COLORS.primary_blue}
-          paginationStyleItem={styles.paginationItem}
-          paginationStyleContainer={styles.paginationContainer}
-        />
-      </View>
-      <View style={styles.buttons_container}>
-        <ButtonComponent label={'Add To Cart'} onpress={addToCartHandler} />
-        <ButtonComponent label={'Buy Now'} onpress={buyNowHandler} isFilled={true} />
-      </View>
-      <View style={styles.description_container}>
-        <Text style={styles.description_heading}>Details</Text>
-        <Text style={styles.description}>{details.description}</Text>
-      </View>
+        <View style={{ marginTop: 12, width: wp(100), borderRadius: 6, padding: 12, backgroundColor: COLORS.light_gray }}>
+          <SwiperFlatList
+            data={productDetail.images}
+            renderItem={renderImageItem}
+            index={0}
+            showPagination
+            paginationActiveColor={COLORS.primary_yellow}
+            paginationDefaultColor={COLORS.primary_blue}
+            paginationStyleItem={styles.paginationItem}
+            paginationStyleContainer={styles.paginationContainer}
+          />
+        </View>
+        <View style={styles.buttons_container}>
+          <ButtonComponent label={'Add To Cart'} onpress={addToCartHandler} />
+          <ButtonComponent label={'Buy Now'} onpress={buyNowHandler} isFilled={true} />
+        </View>
+        <View style={styles.description_container}>
+          <Text style={styles.description_heading}>Details</Text>
+          <Text style={styles.description}>{productDetail.description}</Text>
+        </View>
+      </>
+
+      }
     </View>
   )
 }
@@ -129,7 +134,7 @@ const styles = StyleSheet.create({
   paginationItem: {
     width: 20,
     height: 2,
-    marginTop:21
+    marginTop: 21
   },
   price_section: {
     flexDirection: "row",

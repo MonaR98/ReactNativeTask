@@ -12,7 +12,7 @@ const RecommendedProducts = () => {
     return (
         loading ? <View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: hp(38), }}><ActivityIndicator color="#000000" /></View>
             : <View style={{ flex: 1, padding: 12 }}>
-                <Text style={{ color:COLORS.primary_blue, fontSize: 24, fontWeight: '300',}}>Recommended</Text>
+                <Text style={{ color: COLORS.primary_blue, fontSize: 24, fontWeight: '300', }}>Recommended</Text>
                 <FlatList
                     data={productList.products}
                     renderItem={renderItem}
@@ -20,6 +20,7 @@ const RecommendedProducts = () => {
                     numColumns={2}
                     contentContainerStyle={{ flexGrow: 1, }}
                     showsVerticalScrollIndicator={false}
+                    maxToRenderPerBatch={4}
                 />
             </View>
     )
